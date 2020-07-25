@@ -1,5 +1,5 @@
-package com.kaisersakhi.stack;
-import com.kaisersakhi.stack.Node;
+package com.kaisersakhi.linkedlist;
+import com.kaisersakhi.Node;
 
 public class LinkedList<Type>{
     Node<Type> head;
@@ -11,18 +11,17 @@ public class LinkedList<Type>{
     }
 
     public void add(Type data){
-        Node<Type> node = new Node<Type>(data);
+        Node<Type> node = new Node<>(data);
         if (this.head == null){
             this.head = node;
-            this.size++;
         }else{
             Node<Type> current = this.head;
             while (current.next!= null){
                 current = current.next;
             }
             current.next = node;
-            this.size++;
         }
+        this.size++;
     }
 
     public  void display(){
