@@ -49,8 +49,13 @@ public class Main {
         tree.add(2);
         tree.add(3);
         tree.add(4);
+        tree.add(5);
 
-        tree.preOrder();
+//        tree.preOrder();
+        tree.levelOrder();
 
+
+//        System.out.println(tree.root.lchild.lchild.data);
+        System.out.println("The count is "+ tree.count());
     }
 }
