@@ -2,7 +2,7 @@ package com.kaisersakhi;
 import com.kaisersakhi.linkedlist.LinkedList;
 import com.kaisersakhi.queue.Queue;
 import com.kaisersakhi.trees.BinaryTree;
-
+import com.kaisersakhi.trees.BinarySearchTree;
 //owner : kaiser sakhi
 
 /*
@@ -22,7 +22,8 @@ public class Main {
     public static void main(String[] args) {
 
 //        queues();
-        binaryTree();
+//        binaryTree();
+        bst();
     }
 
     static void queues(){
@@ -57,5 +58,17 @@ public class Main {
 
 //        System.out.println(tree.root.lchild.lchild.data);
         System.out.println("The count is "+ tree.count());
+    }
+
+    static void bst(){
+        var bst = new BinarySearchTree<Integer>();
+        bst.insert(20);
+        bst.insert(18);
+        bst.add(23);
+        bst.add(10);
+//        bst.levelOrder();
+//        bst.preOrder();
+        bst.inOrder();
+        System.out.println("Count is :"+bst.count());
     }
 }
