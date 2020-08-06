@@ -113,4 +113,15 @@ public class BinaryTree<Type> {
     public int count(){
         return count_(this.root);
     }
+
+    private void in_order(Node<Type> node){
+        if (node == null) return;
+        in_order(node.lchild);
+        System.out.println(node.data);
+        in_order(node.rchild);
+    }
+
+    public void inOrder(){
+        this.in_order(this.root);
+    }
 }
