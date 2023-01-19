@@ -7,7 +7,7 @@ public class SinglyLinkedList<T> {
     private ListNode<T> head;
     private int size;
 
-    SinglyLinkedList() {
+    public SinglyLinkedList() {
         this.head = null;
         this.size = 0;
     }
@@ -69,6 +69,13 @@ public class SinglyLinkedList<T> {
             previous = current;
             current = current.next;
         }
+        return data;
+    }
+
+    public T popHead(){
+        if (head == null) return null;
+        T data = head.data;
+        head = head.next;
         return data;
     }
 
@@ -179,5 +186,10 @@ public class SinglyLinkedList<T> {
 
     public int size() {
         return this.size;
+    }
+
+    public T getHead() {
+        if (head == null) return null;
+        return head.data;
     }
 }
