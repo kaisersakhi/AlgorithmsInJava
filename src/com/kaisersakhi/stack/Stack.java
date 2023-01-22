@@ -6,7 +6,7 @@ import com.kaisersakhi.linkedlist.SinglyLinkedList;
 
 public class Stack<T> {
     private final SinglyLinkedList<T> list;
-    Stack(){
+    public Stack(){
         this.list = new SinglyLinkedList<T>();
     }
 

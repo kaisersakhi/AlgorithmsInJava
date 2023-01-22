@@ -81,4 +81,9 @@ public class DoublyLinkedList <T>{
 
     public int size(){return this.size;}
     public boolean isNotEmpty(){return size > 0;}
+
+    public T peekFront() {
+        if (this.size < 1) return null;
+        return this.head.data;
+    }
 }

@@ -48,6 +48,7 @@ public class SinglyLinkedList<T> {
         ListNode<T> newNode = new ListNode<>(data);
         newNode.next = this.head;
         this.head = newNode;
+        ++size;
     }
 
     public T pop() {
@@ -76,6 +77,7 @@ public class SinglyLinkedList<T> {
         if (head == null) return null;
         T data = head.data;
         head = head.next;
+        --size;
         return data;
     }
 
