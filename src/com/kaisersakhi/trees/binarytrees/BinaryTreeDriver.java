@@ -1,4 +1,4 @@
-package com.kaisersakhi.trees;
+package com.kaisersakhi.trees.binarytrees;
 
 public class BinaryTreeDriver {
     public static void main(String[] args) {

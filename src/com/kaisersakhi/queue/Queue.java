@@ -18,5 +18,10 @@ public class Queue <T>{
     }
 
     public boolean isNotEmpty(){return list.isNotEmpty();}
+    public boolean isEmpty(){return !list.isNotEmpty();}
     public int size(){return list.size();}
+
+    public T peekFront(){
+        return list.peekFront();
+    }
 }

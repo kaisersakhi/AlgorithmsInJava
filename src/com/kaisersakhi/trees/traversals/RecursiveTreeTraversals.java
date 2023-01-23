@@ -2,7 +2,7 @@ package com.kaisersakhi.trees.traversals;
 
 import com.kaisersakhi.trees.Node;
 
-public class RecursiveTreeTraversals<T> {
+public class RecursiveTreeTraversals<T extends Comparable<T>> {
     public void preorder(Node<T> node, StringBuilder stringBuilder) {
         if (node != null) {
             stringBuilder.append(node.data);

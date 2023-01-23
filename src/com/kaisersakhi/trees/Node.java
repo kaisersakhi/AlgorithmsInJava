@@ -1,6 +1,8 @@
 package com.kaisersakhi.trees;
 
-public class Node <T>{
+import org.jetbrains.annotations.NotNull;
+
+public class Node <T extends Comparable<T>> implements Comparable<T>{
     public T data;
     public Node<T> leftChild;
     public Node<T> rightChild;
@@ -17,5 +19,11 @@ public class Node <T>{
     @Override
     public String toString(){
         return data.toString();
+    }
+
+
+    @Override
+    public int compareTo(@NotNull T o) {
+        return this.data.compareTo(o);
     }
 }

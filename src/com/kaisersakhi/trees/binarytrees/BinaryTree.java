@@ -1,17 +1,19 @@
-package com.kaisersakhi.trees;
+package com.kaisersakhi.trees.binarytrees;
 
 import com.kaisersakhi.queue.Queue;
+import com.kaisersakhi.trees.ITree;
+import com.kaisersakhi.trees.Node;
 import com.kaisersakhi.trees.traversals.IterativeTreeTraversals;
 import com.kaisersakhi.trees.traversals.RecursiveTreeTraversals;
 
-public class BinaryTree<T> implements ITree<T>{
+public class BinaryTree<T extends Comparable<T>> implements ITree<T> {
     private final Queue<Node<T>> queue;
-    private int size;
+    protected int size;
 
-    Node<T> root;
+    protected Node<T> root;
 
-    private final RecursiveTreeTraversals<T> recursiveTreeTraversals;
-    private final IterativeTreeTraversals<T> iterativeTreeTraversals;
+    protected final RecursiveTreeTraversals<T> recursiveTreeTraversals;
+    protected final IterativeTreeTraversals<T> iterativeTreeTraversals;
 
     public BinaryTree(){
         this.queue = new Queue<>();
@@ -71,7 +73,8 @@ public class BinaryTree<T> implements ITree<T>{
     public String postorderTraversal(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append('[');
-        recursiveTreeTraversals.postorder(this.root, stringBuilder);
+//        recursiveTreeTraversals.postorder(this.root, stringBuilder);
+        iterativeTreeTraversals.postorder(this.root, stringBuilder);
         stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         stringBuilder.append(']');
         return stringBuilder.toString();
