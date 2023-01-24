@@ -1,6 +1,7 @@
 package com.kaisersakhi.trees.binarytrees;
 
 import com.kaisersakhi.queue.Queue;
+import com.kaisersakhi.trees.BinaryTreeHelper;
 import com.kaisersakhi.trees.ITree;
 import com.kaisersakhi.trees.Node;
 import com.kaisersakhi.trees.traversals.IterativeTreeTraversals;
@@ -14,19 +15,22 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T> {
 
     protected final RecursiveTreeTraversals<T> recursiveTreeTraversals;
     protected final IterativeTreeTraversals<T> iterativeTreeTraversals;
+    protected final BinaryTreeHelper<T> helper;
 
-    public BinaryTree(){
+    public BinaryTree() {
         this.queue = new Queue<>();
         this.size = 0;
         this.root = null;
 
         this.recursiveTreeTraversals = new RecursiveTreeTraversals<>();
         this.iterativeTreeTraversals = new IterativeTreeTraversals<>();
+
+        this.helper = new BinaryTreeHelper<>();
     }
 
     @Override
     public void insert(T data) {
-        if (root == null){
+        if (root == null) {
             root = new Node<>(data);
             ++size;
             queue.enqueue(root);
@@ -34,10 +38,10 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T> {
         }
         Node<T> current = queue.peekFront();
         assert current != null;
-        if (current.leftChild == null){
+        if (current.leftChild == null) {
             current.leftChild = new Node<>(data);
             queue.enqueue(current.leftChild);
-        }else if (current.rightChild == null){
+        } else if (current.rightChild == null) {
             current.rightChild = new Node<>(data);
             queue.enqueue(current.rightChild);
             queue.dequeue();
@@ -46,11 +50,11 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T> {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return inorderTraversal();
     }
 
-    public String preOrderTraversals(){
+    public String preOrderTraversals() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append('[');
 //        recursiveTreeTraversals.preorder(this.root, stringBuilder);
@@ -60,7 +64,7 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T> {
         return stringBuilder.toString();
     }
 
-    public String inorderTraversal(){
+    public String inorderTraversal() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append('[');
 //        recursiveTreeTraversals.inorder(this.root, stringBuilder);
@@ -70,22 +74,38 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T> {
         return stringBuilder.toString();
     }
 
-    public String postorderTraversal(){
+    public String postorderTraversal() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append('[');
 //        recursiveTreeTraversals.postorder(this.root, stringBuilder);
         iterativeTreeTraversals.postorder(this.root, stringBuilder);
-        stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
+        if (stringBuilder.length() > 2)
+            stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         stringBuilder.append(']');
         return stringBuilder.toString();
     }
 
-    public String levelOrderTraversal(){
+    public String levelOrderTraversal() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append('[');
         iterativeTreeTraversals.levelOrder(this.root, stringBuilder);
         stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         stringBuilder.append(']');
         return stringBuilder.toString();
+    }
+
+    public int height() {
+        if (root == null) return 0;
+        return helper.height(root);
+    }
+
+    public T inorderPredecessor() {
+        if (root == null) return null;
+        return helper.inorderPredecessor(root).data;
+    }
+
+    public T inorderSuccessor() {
+        if (root == null) return null;
+        return helper.inorderSuccessor(root).data;
     }
 }

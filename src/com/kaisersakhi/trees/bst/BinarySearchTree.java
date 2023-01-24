@@ -40,4 +40,21 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
         }
         ++this.size;
     }
+
+    public void delete(T key){
+        if (root == null) return;
+        int[] hasBeenDeleted = new int[1];
+        super.helper.delete(root, key, hasBeenDeleted);
+        if(hasBeenDeleted[0] == 1){
+            --super.size;
+        }
+    }
+
+    public T search(T key){
+        Node<T> temp =  helper.search(root, key);
+        if (temp != null)
+            return temp.data;
+        return null;
+    }
+
 }
