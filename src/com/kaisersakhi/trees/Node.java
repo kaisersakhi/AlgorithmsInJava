@@ -7,13 +7,16 @@ public class Node <T extends Comparable<T>> implements Comparable<T>{
     public Node<T> leftChild;
     public Node<T> rightChild;
 
+    public byte height;
     public Node(){
         leftChild = rightChild = null;
         data = null;
+        height = 1;
     }
     public Node(T data){
         this.data = data;
         this.leftChild = this.rightChild = null;
+        height = 1;
     }
 
     @Override
